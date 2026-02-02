@@ -30,36 +30,35 @@ Al finalizar este proyecto se demuestra la capacidad de:
 
 ## 📁 Estructura del Proyecto
 
+```
 ProyectoFinal_Arevalo/
 │
-├── pom.xml ← Dependencias Maven
-├── testng.xml ← Configuración TestNG
+├── pom.xml                     ← Dependencias Maven
+├── testng.xml                  ← Configuración TestNG
 ├── .gitignore
-├── README.md ← Esta documentación
+├── README.md                   ← Esta documentación
 │
 └── src/
-├── main/
-│ └── java/ar/org/proyectoFinal/
-│ ├── BasePage.java ← Métodos comunes
-│ ├── LoginPage.java ← Page Object Login
-│ ├── DashboardPage.java ← Page Object Dashboard
-│ └── PIMPage.java ← Page Object PIM
-│
-└── test/
-├── java/ar/org/proyectoFinal/
-│ ├── runner/
-│ │ ├── TestRunner.java ← Configuración Cucumber + TestNG
-│ │ └── Hooks.java ← Inicialización y cierre del driver
-│ │
-│ └── steps/
-│ └── FlujoPrincipalSteps.java ← Step Definitions
-│
-└── resources/
-└── features/
-└── flujo_completo.feature ← Escenarios Gherkin
-
-
----
+    ├── main/
+    │   └── java/ar/org/proyectoFinal/
+    │       ├── BasePage.java        ← Métodos comunes
+    │       ├── LoginPage.java       ← Page Object Login
+    │       ├── DashboardPage.java   ← Page Object Dashboard
+    │       └── PIMPage.java         ← Page Object PIM
+    │
+    └── test/
+        ├── java/ar/org/proyectoFinal/
+        │   ├── runner/
+        │   │   ├── TestRunner.java  ← Configuración Cucumber + TestNG
+        │   │   └── Hooks.java       ← Inicialización y cierre del driver
+        │   │
+        │   └── steps/
+        │       └── FlujoPrincipalSteps.java ← Step Definitions
+        │
+        └── resources/
+            └── features/
+                └── flujo_completo.feature ← Escenarios Gherkin
+```
 
 ## 🧪 Features Automatizados
 
