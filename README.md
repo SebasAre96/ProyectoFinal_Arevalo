@@ -33,31 +33,33 @@ Al finalizar este proyecto se demuestra la capacidad de:
 ```
 ProyectoFinal_Arevalo/
 │
-├── pom.xml                     ← Dependencias Maven
-├── testng.xml                  ← Configuración TestNG
+├── pom.xml                            ← Dependencias Maven
+├── testng.xml                         ← Configuración TestNG
 ├── .gitignore
-├── README.md                   ← Esta documentación
+├── README.md                          ← Documentación
 │
 └── src/
     ├── main/
     │   └── java/ar/org/proyectoFinal/
-    │       ├── BasePage.java        ← Métodos comunes
-    │       ├── LoginPage.java       ← Page Object Login
-    │       ├── DashboardPage.java   ← Page Object Dashboard
-    │       └── PIMPage.java         ← Page Object PIM
+    │        └── pages/                ← Page Objects 
+    │             ├── BasePage.java        
+    │             ├── LoginPage.java       
+    │             ├── DashboardPage.java   
+    │             └── PIMPage.java         
     │
     └── test/
         ├── java/ar/org/proyectoFinal/
         │   ├── runner/
-        │   │   ├── TestRunner.java  ← Configuración Cucumber + TestNG
-        │   │   └── Hooks.java       ← Inicialización y cierre del driver
+        │   │   ├── TestRunner.java    ← Configuración Cucumber + TestNG
+        │   │   └── Hooks.java         ← Inicialización y cierre del driver
         │   │
         │   └── steps/
-        │       └── FlujoPrincipalSteps.java ← Step Definitions
+        │       └── FlujoPrincipalSteps.java           ← Step Definitions
         │
         └── resources/
             └── features/
-                └── flujo_completo.feature ← Escenarios Gherkin
+                └── flujo_completo.feature             ← Scenarios Gherkin
+                └── flujo_completo_data-driven.feature ← Scenario Outline
 ```
 
 ## 🧪 Features Automatizados
@@ -81,6 +83,27 @@ Ejecutar el flujo completo:
 - Retorno a la página de login
 
 ---
+
+### ⭐ Enfoque Data-Driven (Scenario Outline)
+
+Como extensión del proyecto, se implementa un enfoque Data-Driven Testing utilizando Scenario Outline de Cucumber,
+permitiendo ejecutar un mismo flujo de prueba con diferentes combinaciones de datos sin duplicar escenarios ni lógica de
+automatización.
+
+Este enfoque se integra de forma natural al diseño existente, reutilizando los mismos Page Objects y Step Definitions,
+manteniendo el código limpio, escalable y fácil de mantener.
+
+## 🎯 Objetivo del Data-Driven
+
+Ejecutar múltiples casos de prueba a partir de un único escenario
+
+Probar distintas combinaciones de datos de entrada
+
+Evitar duplicación de escenarios Gherkin
+
+Facilitar la ampliación de los tests
+
+Aplicar buenas prácticas de automatización vistas en el curso
 
 ## 📄 Ejemplo de Feature (Gherkin)
 
@@ -106,6 +129,20 @@ Feature: Flujo completo OrangeHRM
     And busca el empleado "John"
     And cierra sesion
     Then vuelve a la pagina de login
+
+
+  Scenario Outline: Flujo completo E2E Data-Driven
+    Given el usuario accede a OrangeHRM
+    When realiza login con usuario "<usuario>" y password "<password>"
+    And navega al modulo PIM
+    And busca el empleado "<empleado>"
+    And cierra sesion
+    Then vuelve a la pagina de login
+
+    Examples:
+      | usuario | password | empleado |
+      | Admin   | admin123 | John     |
+
 ```
 
 ## 🚀 Cómo Ejecutar el Proyecto
@@ -145,18 +182,9 @@ WebDriverManager para gestión automática del driver
 
 ✓ Automatización End-to-End
 
-## 📝 Notas Importantes
-
-Los selectores priorizan estabilidad (name, cssSelector, xpath)
-
-El proyecto sigue las buenas prácticas vistas en clase
-
-Los warnings de CDP no afectan la ejecución de las pruebas
-
-El código está preparado para ser extendido con Data-Driven Testing
-
 ## 👤 Autor
 
 Sebastián Arévalo
+
 Curso de Testing Automation – ICARO
 

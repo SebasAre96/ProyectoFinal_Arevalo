@@ -1,8 +1,8 @@
 package ar.org.proyectoFinal.steps;
 
-import ar.org.proyectoFinal.DashboardPage;
-import ar.org.proyectoFinal.LoginPage;
-import ar.org.proyectoFinal.PIMPage;
+import ar.org.proyectoFinal.Pages.DashboardPage;
+import ar.org.proyectoFinal.Pages.LoginPage;
+import ar.org.proyectoFinal.Pages.PIMPage;
 import ar.org.proyectoFinal.runner.Hooks;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -27,13 +27,15 @@ public class FlujoPrincipalSteps {
         Assert.assertTrue(loginPage.isOnLoginPage(), "La página de login no está visible");
     }
 
-    @Given("el usuario esta logueado")
-    public void elUsuarioEstaLogueado() {
+    @Given("el usuario esta logueado con usuario {string} y password {string}")
+    public void elUsuarioEstaLogueadoConUsuarioYPassword(String usuario, String password) {
         loginPage = new LoginPage(Hooks.driver);
         loginPage.goTo();
-        dashboardPage = loginPage.loginAs("Admin", "admin123");
-        Assert.assertTrue(dashboardPage.isOnDashboard(), "No se visualiza el dashboard después del login");
+        dashboardPage = loginPage.loginAs(usuario, password);
+        Assert.assertTrue(dashboardPage.isOnDashboard(),
+                "No se visualiza el dashboard después del login");
     }
+
 
     // -------------------------
     // WHEN
@@ -64,6 +66,12 @@ public class FlujoPrincipalSteps {
     public void cierraSesion() {
         loginPage = dashboardPage.logout();
     }
+
+    @When("realiza login con usuario {string} y password {string}")
+    public void realizaLoginConUsuarioYPassword(String usuario, String password) {
+        dashboardPage = loginPage.loginAs(usuario, password);
+    }
+
 
     // -------------------------
     // THEN

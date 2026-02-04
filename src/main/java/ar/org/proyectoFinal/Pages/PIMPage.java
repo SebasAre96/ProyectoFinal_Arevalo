@@ -1,4 +1,4 @@
-package ar.org.proyectoFinal;
+package ar.org.proyectoFinal.Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
