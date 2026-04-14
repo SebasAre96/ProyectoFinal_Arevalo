@@ -1,111 +1,120 @@
-# Proyecto Final – Automatización OrangeHRM
+# 🚀 QA Automation Framework – Selenium + BDD (OrangeHRM)
 
-## Selenium · Cucumber · TestNG · Page Object Model
+## 🧪 Descripción general
 
----
+Este proyecto implementa un framework de automatización de pruebas funcionales sobre la aplicación web **OrangeHRM Demo**, utilizando **Selenium WebDriver** y un enfoque **BDD con Cucumber**.
 
-## 📋 Descripción
-
-Este proyecto corresponde al **trabajo final del curso de Testing Automation**.  
-Se implementa una solución de automatización de pruebas funcionales sobre la aplicación **OrangeHRM Demo**, utilizando
-el **stack completo de automatización visto en clase**.
-
-El proyecto aplica **BDD con Cucumber**, **Selenium WebDriver**, **TestNG** y el patrón **Page Object Model (POM)** para
-automatizar flujos críticos de la aplicación.
+El objetivo es validar flujos críticos de negocio mediante pruebas automatizadas **End-to-End (E2E)**, aplicando buenas prácticas de diseño que permitan mantener un código **escalable, reutilizable y fácil de mantener**.
 
 ---
 
-## 🎯 Objetivos
+## 💼 ¿Qué demuestra este proyecto?
 
-Al finalizar este proyecto se demuestra la capacidad de:
-
-- Aplicar automatización de pruebas funcionales con Selenium WebDriver
-- Implementar BDD utilizando Cucumber y Gherkin
-- Utilizar Page Object Model para mantener el código ordenado
-- Ejecutar pruebas con TestNG
-- Automatizar flujos End-to-End (E2E)
-- Integrar todas las herramientas vistas durante el curso
+- Diseño de un **framework de automatización UI escalable**
+- Implementación de **BDD (Behavior Driven Development)** con Cucumber y Gherkin
+- Aplicación del patrón **Page Object Model (POM)**
+- Automatización de **flujos End-to-End (E2E)** reales
+- Implementación de **Data-Driven Testing** con Scenario Outline
+- Separación clara de responsabilidades (pages, steps, runners)
+- Código mantenible orientado a crecimiento del proyecto
 
 ---
 
-## 📁 Estructura del Proyecto
+## 🌐 Aplicación bajo prueba
+
+Aplicación web de gestión de recursos humanos:
+
+👉 https://opensource-demo.orangehrmlive.com/
+
+---
+
+## 🧰 Stack tecnológico
+
+- ☕ Java  
+- 🌐 Selenium WebDriver  
+- 🥒 Cucumber (BDD – Gherkin)  
+- 🧪 TestNG  
+- 📦 Maven  
+- 🧱 Page Object Model (POM)  
+- ⚙️ WebDriverManager  
+
+---
+
+## 🧠 Estrategia de automatización
+
+El framework está diseñado bajo principios de automatización utilizados en entornos reales:
+
+- Uso de **BDD** para definir escenarios entendibles por negocio
+- Implementación de **Page Object Model** para desacoplar la lógica de UI
+- Reutilización de componentes para mejorar mantenibilidad
+- Separación de capas:
+  - Features (Gherkin)
+  - Step Definitions
+  - Page Objects
+  - Configuración (Hooks / Runner)
+- Automatización de flujos críticos del sistema
+
+---
+
+## 📁 Estructura del proyecto
 
 ```
-ProyectoFinal_Arevalo/
-│
-├── pom.xml                            ← Dependencias Maven
-├── testng.xml                         ← Configuración TestNG
-├── .gitignore
-├── README.md                          ← Documentación
+├── pom.xml
+├── testng.xml
+├── README.md
 │
 └── src/
-    ├── main/
-    │   └── java/ar/org/proyectoFinal/
-    │        └── pages/                ← Page Objects 
-    │             ├── BasePage.java        
-    │             ├── LoginPage.java       
-    │             ├── DashboardPage.java   
-    │             └── PIMPage.java         
+    ├── main/java/.../pages/      # Page Objects
+    │   ├── BasePage.java
+    │   ├── LoginPage.java
+    │   ├── DashboardPage.java
+    │   └── PIMPage.java
     │
     └── test/
-        ├── java/ar/org/proyectoFinal/
-        │   ├── runner/
-        │   │   ├── TestRunner.java    ← Configuración Cucumber + TestNG
-        │   │   └── Hooks.java         ← Inicialización y cierre del driver
-        │   │
-        │   └── steps/
-        │       └── FlujoPrincipalSteps.java           ← Step Definitions
+        ├── java/.../runner/      # Runner + Hooks
+        ├── java/.../steps/       # Step Definitions
         │
-        └── resources/
-            └── features/
-                └── flujo_completo.feature             ← Scenarios Gherkin
-                └── flujo_completo_data-driven.feature ← Scenario Outline
+        └── resources/features/   # Escenarios Gherkin
+            ├── flujo_completo.feature
+            └── flujo_data_driven.feature
 ```
-
-## 🧪 Features Automatizados
-
-### ✔️ Login exitoso
-
-Validar que el usuario pueda ingresar a la aplicación con credenciales válidas y visualizar el dashboard.
-
-### ✔️ Búsqueda de empleado
-
-Realizar login, navegar al módulo **PIM**, buscar un empleado y validar que se muestren resultados.
-
-### ✔️ Flujo completo E2E
-
-Ejecutar el flujo completo:
-
-- Login
-- Navegación a PIM
-- Búsqueda de empleado
-- Cierre de sesión
-- Retorno a la página de login
 
 ---
 
-### ⭐ Enfoque Data-Driven (Scenario Outline)
+## 🧪 Cobertura de pruebas
 
-Como extensión del proyecto, se implementa un enfoque Data-Driven Testing utilizando Scenario Outline de Cucumber,
-permitiendo ejecutar un mismo flujo de prueba con diferentes combinaciones de datos sin duplicar escenarios ni lógica de
-automatización.
+### 🔐 Login
+- Validación de acceso con credenciales válidas
+- Verificación de redirección al dashboard
 
-Este enfoque se integra de forma natural al diseño existente, reutilizando los mismos Page Objects y Step Definitions,
-manteniendo el código limpio, escalable y fácil de mantener.
+### 👤 Gestión de empleados (PIM)
+- Navegación al módulo PIM
+- Búsqueda de empleados
+- Validación de resultados
 
-## 🎯 Objetivo del Data-Driven
+### 🔄 Flujo completo E2E
+- Login
+- Navegación
+- Búsqueda
+- Logout
+- Validación de retorno al login
 
-Ejecutar múltiples casos de prueba a partir de un único escenario
+---
 
-Probar distintas combinaciones de datos de entrada
+## ⭐ Data-Driven Testing
 
-Evitar duplicación de escenarios Gherkin
+Se implementa un enfoque **Data-Driven** utilizando `Scenario Outline` de Cucumber, permitiendo ejecutar múltiples combinaciones de datos sin duplicar escenarios.
 
-Facilitar la ampliación de los tests
+### Beneficios:
 
-Aplicar buenas prácticas de automatización vistas en el curso
+- Reutilización de lógica de automatización  
+- Escalabilidad de pruebas  
+- Mayor cobertura con menor esfuerzo  
+- Mantenimiento simplificado  
 
-## 📄 Ejemplo de Feature (Gherkin)
+---
+
+## 🥒 Ejemplo de escenario BDD
 
 ```gherkin
 Feature: Flujo completo OrangeHRM
@@ -114,22 +123,6 @@ Feature: Flujo completo OrangeHRM
     Given el usuario accede a OrangeHRM
     When realiza login
     Then visualiza el dashboard
-
-  Scenario: Buscar empleado
-    Given el usuario accede a OrangeHRM
-    And realiza login
-    When navega al modulo PIM
-    And busca el empleado "John"
-    Then se muestran resultados
-
-  Scenario: Flujo completo E2E
-    Given el usuario accede a OrangeHRM
-    When realiza login
-    And navega al modulo PIM
-    And busca el empleado "John"
-    And cierra sesion
-    Then vuelve a la pagina de login
-
 
   Scenario Outline: Flujo completo E2E Data-Driven
     Given el usuario accede a OrangeHRM
@@ -142,49 +135,58 @@ Feature: Flujo completo OrangeHRM
     Examples:
       | usuario | password | empleado |
       | Admin   | admin123 | John     |
-
 ```
 
-## 🚀 Cómo Ejecutar el Proyecto
+---
 
-Desde IntelliJ IDEA
+## ▶️ Ejecución de pruebas
 
-Click derecho sobre testng.xml
-Seleccionar Run 'testng.xml'
+Desde consola:
 
-## 🧱 Arquitectura Utilizada
+```
+mvn clean test
+```
 
-Page Object Model (POM) para encapsular la lógica de las páginas
+O desde IDE:
 
-Cucumber + Gherkin para definir escenarios legibles
+- Ejecutar `testng.xml`
 
-TestNG como framework de ejecución
+---
 
-Hooks para inicializar y cerrar el WebDriver
+## 🧱 Arquitectura y buenas prácticas
 
-WebDriverManager para gestión automática del driver
+- ✔️ Page Object Model (POM)  
+- ✔️ BDD con Cucumber  
+- ✔️ Separación de responsabilidades  
+- ✔️ Hooks para setup y teardown  
+- ✔️ WebDriverManager para gestión de drivers  
+- ✔️ Código reutilizable y mantenible  
+- ✔️ Automatización orientada a flujos de negocio  
 
-## 🔑 Herramientas utilizadas
+---
 
-✓ Java
+## ⚙️ Próximas mejoras
 
-✓ Maven
+- Integración con CI/CD (GitHub Actions / Jenkins)  
+- Ejecución en paralelo  
+- Captura automática de evidencias (screenshots en fallos)  
+- Configuración por entornos  
+- Integración con reportes (Allure / ExtentReports)  
 
-✓ Selenium WebDriver
+---
 
-✓ Cucumber (BDD)
+## 📸 Ejecución de pruebas (opcional)
 
-✓ Gherkin
+_Agregar screenshots o GIFs de ejecución_
 
-✓ TestNG
+---
 
-✓ Page Object Model
+## 👨‍💻 Autor
 
-✓ Automatización End-to-End
+**Sebastian Arevalo**
 
-## 👤 Autor
+---
 
-Sebastián Arévalo
+## ⭐ Notas
 
-Curso de Testing Automation – ICARO
-
+Este proyecto simula un entorno real de automatización UI, aplicando buenas prácticas utilizadas en QA Automation para asegurar calidad, mantenibilidad y escalabilidad de pruebas.
