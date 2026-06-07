@@ -175,12 +175,6 @@ O desde IDE:
 
 ---
 
-## 📸 Ejecución de pruebas (opcional)
-
-_Agregar screenshots o GIFs de ejecución_
-
----
-
 ## 👨‍💻 Autor
 
 **Sebastian Arevalo**
